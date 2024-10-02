@@ -6,18 +6,34 @@ using namespace std;
 
 int main()
 {
+  int test1[5]{2, 3, 4, 5, 1};
+  int test2[5]{4, 5, 1, 2, 3};
+  int test3[5]{5, 1, 2, 3, 4};
+
   int numbers[5]{1, 2, 3, 4, 5};
   int *arrPtr = &numbers[0];
 
-  cout << "Numbers before: " << endl;
-  for (int i : numbers)
-    cout << i << endl;
-  cout << endl << endl;
 
-  array_shift(arrPtr, 5, 2);
+  array_shift_right(arrPtr, 5, 1);
 
-  cout << "Numbers after: " << endl;
-  for (int k : numbers)
-    cout << k << endl;
-  cout << endl;
+  for (int i = 0; i < 5; i++)
+  {
+    assert(numbers[i] == test1[i]);
+  }
+
+
+  array_shift_right(arrPtr, 5, 2);
+
+  for (int i = 0; i < 5; i++)
+  {
+    assert(numbers[i] == test2[i]);
+  }
+
+
+  array_shift_right(arrPtr, 5, 6);
+
+  for (int i = 0; i < 5; i++)
+  {
+    assert(numbers[i] == test3[i]);
+  }
 }
